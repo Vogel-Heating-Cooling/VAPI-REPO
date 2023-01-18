@@ -2,6 +2,7 @@ var fs = require('fs'),
     path = require('path');
 
 var pubroot = path.join(__dirname,'../public/');
+var viewroot =path.join(__dirname,'../controllers/');
 var index = 'index.html';
 
 'MIME TYPES'
@@ -39,8 +40,6 @@ var servepublic = (url,res)=>{
   });
 }
 
-var viewroot =path.join(__dirname,'../controllers/');
-
 var servecontrol = (url="",res=null)=>{
   return new Promise((resolve,reject)=>{
     if(res){
@@ -76,7 +75,22 @@ var servecontrol = (url="",res=null)=>{
   });
 }
 
+var SERVEresource=()=>{
+  return new Promise((resolve,reject)=>{
+    servepublic(req.url,res).then(//try to serve a .file
+      was=>{
+        rpak.success=was;
+        if(was){return resolve(true);}
+        else{//request not solved in public
+          servecontrol(req.url,res).then(
+            con=>{return resolve(con.success);}
+          );
+        }
+      }
+    );
+  });
+}
+
 module.exports={
-  servepublic,
-  servecontrol
+  SERVEresource
 }

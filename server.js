@@ -4,10 +4,7 @@ const path = require('path'),
       http = require('http');
 var {exec} = require('child_process');
 
-var {
-  servepublic,
-  servecontrol
-} = require('./bin/vapi-resources.js');
+var {SERVEresource} = require('./bin/vapi-resources.js');
 
 const PORT = 4000; //port for local host
 
@@ -19,19 +16,10 @@ server.on('request',(req,res)=>{
     success:false,
     msg:'Request Resource'
   }
-  servepublic(req.url,res).then(//try to serve a .file
-    was=>{
-      rpak.success=was;
-      if(was){}
-      else{//request not solved in public
-        servecontrol(req.url,res).then(
-          con=>{
-            rpak.success=con.success;
-          }
-        );
-      }
-    }
-  );
+  
+  SERVEresource(req.url,res).then(
+    answer=>{}
+  ).catch(err=>{console.log(err)})
 });
 
 server.listen(PORT,()=>{console.log('Server Listening: ',PORT);});
