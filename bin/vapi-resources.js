@@ -2,14 +2,16 @@ var fs = require('fs'),
     path = require('path');
 
 var pubroot = path.join(__dirname,'../public/');
+var index = 'index.html';
 
+'MIME TYPES'
 var exts = [
   {ext:'\.js$',type:'text/javascript'},
   {ext:'\.css$',type:'text/css'},
   {ext:'\.html$',type:'text/html'},
   {ext:'\.png$',type:'image/png'},
-  {ext:'\.json$',type:'application/json'},
-]
+  {ext:'\.json$',type:'application/json'}
+];
 
 var CHECKexts=(url)=>{
   for(let x=0;x<exts.length;x++){
@@ -44,7 +46,7 @@ var servecontrol = (url="",res=null)=>{
     if(res){
       fs.stat(`${path.join(viewroot,url)}.html`,(err,stat)=>{
         if(err){
-          fs.readFile(path.join(viewroot,'vapi.html'),(err,doc)=>{
+          fs.readFile(path.join(viewroot,index),(err,doc)=>{
             if(err){//send to landingd?
               res.writeHead(500);
               res.end();
