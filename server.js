@@ -9,27 +9,24 @@ var {
   servecontrol
 } = require('./bin/vapi-resources.js');
 
-var port = 4000; //port for local host
+const PORT = 4000; //port for local host
 
 var server = http.createServer();
 
 server.on('request',(req,res)=>{
   let data = '';
-  let vrpak = {
+  let rpak = {
     success:false,
     msg:'Request Resource'
   }
   servepublic(req.url,res).then(//try to serve a .file
     was=>{
       vrpak.success=was;
-      if(was){
-        //return resolve({res:res,pak:vpak});
-      }
-      else{
-        servecontrol(req.url,res).then(//try to serve a page
+      if(was){}
+      else{//request not solved in public
+        servecontrol(req.url,res).then(
           con=>{
             vrpak.success=con.success;
-            //return resolve({res:res,pak:vpak});
           }
         );
       }
@@ -37,4 +34,4 @@ server.on('request',(req,res)=>{
   );
 });
 
-server.listen(port,()=>{console.log('Resource Server Listening: ',port);});
+server.listen(PORT,()=>{console.log('Server Listening: ',PORT);});

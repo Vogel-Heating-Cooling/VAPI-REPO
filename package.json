@@ -1,10 +1,10 @@
 {
-  "name": "vapi",
+  "name": "vapi-repo",
   "version": "1.0.0",
-  "description": "vogel heating & cooling application",
+  "description": "server for static files",
   "main": "server.js",
   "scripts": {
-    "static":"node server.js"
+    "repo":"node server.js"
   },
   "author": "cmv",
   "license": "ISC",
