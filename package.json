@@ -9,6 +9,6 @@
   "author": "cmv",
   "license": "ISC",
   "dependencies": {
-    "nodemon": "^2.0.19",
+    "nodemon": "^2.0.19"
   }
 }
