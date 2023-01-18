@@ -1,0 +1,13 @@
+{
+  "name": "vapi",
+  "version": "1.0.0",
+  "description": "vogel heating & cooling application",
+  "main": "server.js",
+  "scripts": {
+    "static":"node server.js"
+  },
+  "author": "cmv",
+  "license": "ISC",
+  "dependencies": {
+  }
+}
