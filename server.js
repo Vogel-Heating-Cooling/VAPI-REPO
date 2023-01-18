@@ -21,12 +21,12 @@ server.on('request',(req,res)=>{
   }
   servepublic(req.url,res).then(//try to serve a .file
     was=>{
-      vrpak.success=was;
+      rpak.success=was;
       if(was){}
       else{//request not solved in public
         servecontrol(req.url,res).then(
           con=>{
-            vrpak.success=con.success;
+            rpak.success=con.success;
           }
         );
       }
