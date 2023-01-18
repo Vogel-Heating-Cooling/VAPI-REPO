@@ -11,6 +11,7 @@ A simple set of client pages can be setup by using the public folder as the root
 2) Repository: If only to serve resource files.
 A Repository can be setup by including a public file in the root. From there the repo can be structured as needed. Public is always "active" to the server and is checked first
 
+
 -START-
 Once the correct branch is checked out, ensure the appropriate node modules are installed. The server can then be started from the command line. The startup does not change if the repository needs to be run in a network of servers.
 
