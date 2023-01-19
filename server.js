@@ -11,12 +11,13 @@ const PORT = 4000; //port for local host
 var server = http.createServer();
 
 server.on('request',(req,res)=>{
+  console.log('request');
   let data = '';
   let rpak = {
     success:false,
     msg:'Request Resource'
   }
-  
+
   SERVEresource(req.url,res).then(
     answer=>{}
   ).catch(err=>{console.log(err)})
