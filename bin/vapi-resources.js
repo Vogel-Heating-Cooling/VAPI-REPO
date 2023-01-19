@@ -75,14 +75,13 @@ var servecontrol = (url="",res=null)=>{
   });
 }
 
-var SERVEresource=()=>{
+var SERVEresource=(url='',res)=>{
   return new Promise((resolve,reject)=>{
-    servepublic(req.url,res).then(//try to serve a .file
+    servepublic(url,res).then(//try to serve a .file
       was=>{
-        rpak.success=was;
         if(was){return resolve(true);}
         else{//request not solved in public
-          servecontrol(req.url,res).then(
+          servecontrol(url,res).then(
             con=>{return resolve(con.success);}
           );
         }
