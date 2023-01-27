@@ -24,7 +24,7 @@ const content =`
         <div class = "action-buttons-div">
           <div class = "login-action-button" id=${dom.actions.submit} class="flat-action-button">SUBMIT</div>
           <div class = "login-action-button" id=${dom.actions.logout} class="flat-action-button">LOGOUT</div>
-          <img id="${dom.actions.gotovapi}" src="bin/repo/assets/icons/badge.png" />
+          <img id="${dom.actions.gotovapi}" src="http://vogel.vhpportal.com/repo/assets/icons/badge.png" />
         </div>
     </div>
     </div>
