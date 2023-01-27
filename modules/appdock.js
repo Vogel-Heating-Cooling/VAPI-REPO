@@ -11,7 +11,7 @@ export class AppDock{
             appbox.classList.add('vhc-app');
             appbox.id = 'app-' + app;
             appbox.appendChild(document.createElement('img'));
-            appbox.lastChild.src = './bin/repo/assets/icons/' + `${app}` + '.png';
+            appbox.lastChild.src = 'http://vogel.vhpportal.com/repo/assets/icons/' + `${app}` + '.png';
             appbox.appendChild(document.createElement('div'));
             appbox.lastChild.innerText = app;
             let func = apps[app];
