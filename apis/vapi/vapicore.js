@@ -1,4 +1,4 @@
-export var VHPhost = 'https://localhost:5000/'; //'http://vogel.vhpportal.com/';//
+export var VHPhost = 'http://localhost:5000/'; //'http://vogel.vhpportal.com/';//
 
 /* Pack
   collect: '' (group of data)
@@ -51,7 +51,12 @@ export var vpacks={
 //pack japi
 //pack service
 
-export var SENDrequestvhp = (pack,{user='',pswrd='',request='',coid='01'},route='LOGIN',url=VHPhost+'api/')=>{
+export var SENDrequestvhp = (pack,route='LOGIN',{
+  user='VOGCH',
+  pswrd='vogel123',
+  request='',
+  coid='01'
+},url=VHPhost+'api/')=>{
   return new Promise((res,rej)=>{
     let options={
       method:'POST',
@@ -60,8 +65,8 @@ export var SENDrequestvhp = (pack,{user='',pswrd='',request='',coid='01'},route=
       },
       body:JSON.stringify({
         access:{
-          user:user,
-          pswrd:pswrd,
+          user:'VOGCH',
+          pswrd:'vogel123',
           coid:'01',
           request:request
         },
@@ -70,7 +75,7 @@ export var SENDrequestvhp = (pack,{user='',pswrd='',request='',coid='01'},route=
     }
     fetch(url+route,options)
     .then(response=>{return response.json()})
-    .then(data=>{return res(data);})
+    .then(data=>{concols.log(data);return res(data);})
     .catch(err=>{return res(false);})
   });
 }
