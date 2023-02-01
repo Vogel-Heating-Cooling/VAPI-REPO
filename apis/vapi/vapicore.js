@@ -1,3 +1,79 @@
+export var VHPhost = 'https://localhost:5000/'; //'http://vogel.vhpportal.com/';//
+
+/* Pack
+  collect: '' (group of data)
+  store: '' (sub the group)
+  db: '' (actual data)
+  methd: '' (QUERY | REMOVE | INSERT | UPDATE)
+  options: {
+    QUERY:{
+      query:{id:'itemid'}
+    }
+    REMOVE:{
+      query:{id:'itemid'}
+      multi: TRUE | FALSE
+    }
+    UPDATE:{
+      query:{id:'itemid'}
+      update:{$set:item}
+      options:{}
+    }
+    INSERT:{
+      docs: [items] || {item}
+    }
+  }
+
+*/
+var vapiPack = (method='',opts={})=>{
+  return{
+    collect:'apps',
+    store:'SUMTRACKER',
+    db:'mtracker',
+    method:method,
+    options:opts
+  }
+}
+
+export var vpacks={
+  mart:(mp={})=>{
+    if(mp){mp={};}
+    return{
+      collect:mp.collect||'',
+      store:mp.store||'',
+      db:mp.db||'',
+      method:mp.db||'',
+      options:mp.options||{}
+    }
+  }
+}
+
+//pack mart
+//pack japi
+//pack service
+
+export var SENDrequestvhp = (pack,{user='',pswrd='',request='',coid='01'},route='LOGIN',url=VHPhost+'api/')=>{
+  return new Promise((res,rej)=>{
+    let options={
+      method:'POST',
+      headers:{
+        'Accept':'application/json'
+      },
+      body:JSON.stringify({
+        access:{
+          user:user,
+          pswrd:pswrd,
+          coid:'01',
+          request:request
+        },
+        pack:pack
+      })
+    }
+    fetch(url+route,options)
+    .then(response=>{return response.json()})
+    .then(data=>{return res(data);})
+    .catch(err=>{return res(false);})
+  });
+}
 
 export var VAPIhost = 'https://18.191.134.244:5000/'; //'http://localhost:5000/';//
 
