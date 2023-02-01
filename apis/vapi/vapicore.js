@@ -74,8 +74,8 @@ export var SENDrequestvhp = (pack,route='LOGIN',{
       })
     }
     fetch(url+route,options)
-    .then(response=>{return response.json()})
-    .then(data=>{concols.log(data);return res(data);})
+    .then(response=>{console.log('RAW RES>',response);return response.json()})
+    .then(data=>{concols.log('RESPONSE>',data);return res(data);})
     .catch(err=>{return res(false);})
   });
 }
