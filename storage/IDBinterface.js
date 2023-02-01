@@ -65,4 +65,5 @@ export class IDBinterface{
       }
     });
   }
+  REFRESHstore(){console.log('Refresh not set...')}
 }
