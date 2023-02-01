@@ -73,6 +73,7 @@ export var SENDrequestvhp = (pack,route='LOGIN',{
         pack:pack
       })
     }
+    console.log('SENDING REQUEST',options);
     fetch(url+route,options)
     .then(response=>{console.log('RAW RES>',response);return response.json()})
     .then(data=>{concols.log('RESPONSE>',data);return res(data);})
