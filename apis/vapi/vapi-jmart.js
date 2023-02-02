@@ -20,10 +20,13 @@ export var GETjapitest=()=>{
       var wopull = {
           table:'custom',
           option:'download',
-          template:'AR_CustomerPreferences_tbl',
+          template:'AR_CustomerMaster_tbl',
           where:[{OP:'=',CustomerCode:'PUFR02'}]
       };
-      return res(SENDrequestapi(wopull,'japi'));
+      return res(SENDrequestapi(wopull,'japi').then(
+        answr=>{
+          console.log(answr)
+        }));
   });
 }
 
@@ -74,6 +77,7 @@ export var GETwo=(wonum,table='wonumber')=>{
                 wo = awo(answr.body.table[0]);
                 let havedescr=false;
                 let haveemail=false;
+                let havename=false
                 SENDrequestapi({
                     table:'custom',
                     option:'download',
@@ -88,11 +92,31 @@ export var GETwo=(wonum,table='wonumber')=>{
                       }
                     }
                     havedescr=true;
-                    if(haveemail){
+                    if(haveemail && havename){
                       return resolve(wo)
                     }
                   }
                 );
+
+                SENDrequestapi({
+                    table:'custom',
+                    option:'download',
+                    template:'AR_CustomerMaster_tbl',
+                    where:[{OP:'=',CustomerCode:wo.custcode}]
+                },'japi').then( //bring in descriptions
+                  answr=>{
+                    if(answr.body.success){
+                      wo.customername=answr.body.table[0].CustomerName;
+                      console.log(wo.customername, "CUSTOMER NAME")
+                    }
+                    havename=true;
+                    if(haveemail && havedescr){
+                      return resolve(wo)
+                    }
+                  }
+                );
+
+                
 
                 SENDrequestapi({
                     table:'custom',
@@ -105,7 +129,7 @@ export var GETwo=(wonum,table='wonumber')=>{
                       wo.contactemail=answr.body.table[0]?answr.body.table[0].EmailAddress:'';
                     }
                     haveemail = true;
-                    if(havedescr){return resolve(wo);}
+                    if(havedescr && havename){return resolve(wo);}
                   }
                 )
               }else{return resolve(wo);}

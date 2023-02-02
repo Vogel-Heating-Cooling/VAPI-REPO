@@ -12,6 +12,7 @@ var awo = (w)=>{
         contactname:w.contactname||'',
         contactphone:w.contactphone||'',
         contactemail:w.contactemail||'',
+        customername:w.customername||'',
 
         descr:w.descr||'',
         street:w.street||'',
