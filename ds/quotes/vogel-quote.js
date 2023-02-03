@@ -1,5 +1,5 @@
 
-var {acustomer}=require('../customers/vogel-customers.js');
+var {acustomer}=require('https://www.vhpportal.com/repo/ds/customers/vogel-customers.js');
 /* Vogel Quote ////////////////////////////////////////////////////////////////////
 */
 var aquote = (q=null)=>{

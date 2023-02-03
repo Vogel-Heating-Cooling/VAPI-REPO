@@ -1,5 +1,5 @@
-import {VHCform} from './vhc-forms.js';
-import {GETrowTOobject,SETrowFROMobject} from '../modules/vg-tables.js';
+import {VHCform} from 'https://www.vhpportal.com/repo/tools/vhc-forms.js';
+import {GETrowTOobject,SETrowFROMobject} from 'https://www.vhpportal.com/repo/modules/vg-tables.js';
 
 /*
   cont: the top of the custom list

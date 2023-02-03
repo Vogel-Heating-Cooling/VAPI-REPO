@@ -1,4 +1,4 @@
-import { CreateComponent } from "../tools/vhc-components.js";
+import { CreateComponent } from "https://www.vhpportal.com/repo/tools/vhc-components.js";
 
 /* FIND parentNode
     Usually used in events to ensure the event belongs to the correct element

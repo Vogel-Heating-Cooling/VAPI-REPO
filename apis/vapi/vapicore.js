@@ -75,8 +75,8 @@ export var SENDrequestapi = (pack,route='LOGIN',{
     }
     console.log('SENDING REQUEST',options);
     fetch(url+route,options)
-    .then(response=>{console.log('RAW RES>',response);return response.json()})
-    .then(data=>{return res(data);})
+    .then(response=>{return response.json()})
+    .then(data=>{console.log('Response Data>',data);return res(data);})
     .catch(err=>{return res(false);})
   });
 }

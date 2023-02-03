@@ -1,5 +1,5 @@
 
-import{ObjList} from '../tools/vg-lists.js';
+import{ObjList} from 'https://www.vhpportal.com/repo/tools/vg-lists.js';
 
 export class IDBinterface{
   constructor(db,store,dbsetup=()=>{}){

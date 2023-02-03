@@ -1,7 +1,7 @@
-import { awo } from "../wos/vogel-wos.js";
-import { aservicecontract } from "../contracts/vogel-servicecontracts.js";
-import { aservicetrack } from "../tracking/vogel-servicetracking.js";
-import { aservicefinal } from "../final/vogel-servicefinal.js";
+import { awo } from "https://www.vhpportal.com/repo/ds/wos/vogel-wos.js";
+import { aservicecontract } from "https://www.vhpportal.com/repo/ds/contracts/vogel-servicecontracts.js";
+import { aservicetrack } from "https://www.vhpportal.com/repo/ds/tracking/vogel-servicetracking.js";
+import { aservicefinal } from "https://www.vhpportal.com/repo/ds/final/vogel-servicefinal.js";
 
 var aserviceticket=(st={})=>{
   if(!st){st={};}

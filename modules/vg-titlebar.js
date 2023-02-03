@@ -1,5 +1,5 @@
-import {CreateComponent} from '../tools/vhc-components.js';
-import { LoginForm } from './vg-login-form.js';
+import {CreateComponent} from 'https://www.vhpportal.com/repo/tools/vhc-components.js';
+import { LoginForm } from 'https://www.vhpportal.com/repo/modules/vg-login-form.js';
 
 //  PATHS //
 var stylesheets = ['css/vg-titlebar.css'];
@@ -154,7 +154,7 @@ let CREATEactionbuttons=(acts)=>{
   for(let ma in acts){
     alist.push(document.createElement('img'));
     if(ma.includes('spacer')){
-      acts[ma]={src:'./bin/repo/assets/icons/minus.png',title: ''}
+      acts[ma]={src:'https://www.vhpportal.com/repo/assets/icons/minus.png',title: ''}
       alist[alist.length-1].classList.add('moretools-spacer');
     }
     alist[alist.length-1].classList.add(tbdom.utils.buttons.action);

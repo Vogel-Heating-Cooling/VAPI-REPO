@@ -1,4 +1,4 @@
-import {ExcelDateToJSDate} from '../../tools/xltools.js';
+import {ExcelDateToJSDate} from 'https://www.vhpportal.com/repo/tools/xltools.js';
 
 var aservicecontract = (sc=null)=>{
     if(!sc||sc==undefined){
