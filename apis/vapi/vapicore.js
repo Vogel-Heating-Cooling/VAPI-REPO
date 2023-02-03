@@ -51,7 +51,7 @@ export var vpacks={
 //pack japi
 //pack service
 
-export var SENDrequestvhp = (pack,route='LOGIN',{
+export var SENDrequestapi = (pack,route='LOGIN',{
   user='VOGCH',
   pswrd='vogel123',
   request='',
@@ -107,7 +107,7 @@ export var SENDrequest = (pack,request='mart',url=VAPIhost)=>{
   });
 }
 
-export var SENDrequestapi = (pack,request='mart',url=VAPIhost+'api/')=>{
+export var SENDrequestOLDapi = (pack,request='mart',url=VAPIhost+'api/')=>{
   return new Promise((res,rej)=>{
     console.log(url)
     let options={
