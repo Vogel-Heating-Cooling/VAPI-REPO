@@ -1,5 +1,6 @@
 import {VHCform} from 'https://www.vhpportal.com/repo/tools/vhc-forms.js';
 import {DropNote} from 'https://www.vhpportal.com/repo/modules/vg-dropnote.js';
+import {SENDrequestapi} from 'https://www.vhpportal.com/repo/apis/vapi/vapicore.js';
 
 let dom ={
   cont:'login-box',
