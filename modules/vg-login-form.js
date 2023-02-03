@@ -1,5 +1,5 @@
 import {VHCform} from 'https://www.vhpportal.com/repo/tools/vhc-forms.js';
-import {DropNote} from 'https://www.vhpportal.com/repo/repo/modules/vg-dropnote.js';
+import {DropNote} from 'https://www.vhpportal.com/repo/modules/vg-dropnote.js';
 
 let dom ={
   cont:'login-box',
