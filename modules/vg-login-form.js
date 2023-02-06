@@ -1,7 +1,6 @@
-import {VHCform} from '../../repo/tools/vhc-forms.js';
-import {DropNote} from '../../repo/modules/vg-dropnote.js';
-
-const logurl = 'https://18.191.134.244:5000/login';//'https://localHost:5000/login'; //
+import {VHCform} from 'https://www.vhpportal.com/repo/tools/vhc-forms.js';
+import {DropNote} from 'https://www.vhpportal.com/repo/modules/vg-dropnote.js';
+import {SENDrequestapi} from 'https://www.vhpportal.com/repo/apis/vapi/vapicore.js';
 
 let dom ={
   cont:'login-box',
@@ -116,17 +115,7 @@ export class LoginForm extends VHCform{
       let {user,pswrd} = this.form;
       this.storecreds=this.form;
       if(user!=''||pswrd!=''){
-          var options={
-          method:'POST',
-          headers:{
-            'Accept':'application/json'
-          },
-          body:JSON.stringify({access:{user:user,pswrd:pswrd}})
-          }
-          fetch(logurl,options)
-          .then(response=>{return response.json()})
-          .then(data=>{return resolve(data);})
-          .catch(err=>{console.log(err);})
+        return resolve(SENDrequestapi({},'LOGIN',{user:user,pswrd:pswrd}));
       }else{return resolve({success:false});}
       });
     }

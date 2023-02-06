@@ -1,7 +1,7 @@
-import { SENDrequestapi } from './vapicore.js';
-import {awo} from '../../ds/wos/vogel-wos.js';
-import {aservicecontract} from '../../ds/contracts/vogel-servicecontracts.js';
-import {aserviceitem} from '../../ds/customers/vogel-serviceitems.js';
+import { SENDrequestapi } from 'https://www.vhpportal.com/repo/apis/vapi/vapicore.js';
+import {awo} from 'https://www.vhpportal.com/repo/ds/wos/vogel-wos.js';
+import {aservicecontract} from 'https://www.vhpportal.com/repo/ds/contracts/vogel-servicecontracts.js';
+import {aserviceitem} from 'https://www.vhpportal.com/repo/ds/customers/vogel-serviceitems.js';
 
 //WO_DetailHistory_tbl
 //WO_DescOfWorkPerformed_tbl
@@ -23,7 +23,7 @@ export var GETjapitest=()=>{
           template:'AR_CustomerMaster_tbl',
           where:[{OP:'=',CustomerCode:'PUFR02'}]
       };
-      return res(SENDrequestapi(wopull,'japi').then(
+      return res(SENDrequestapi(wopull,'STORE',{request:'jmart'}).then(
         answr=>{
           console.log(answr)
         }));
@@ -36,7 +36,7 @@ export var GETflbook=(book='RES',table='flatratebook')=>{
             table:table,
             bookcode:book
         };
-        return res(SENDrequestapi(opts,'japi'));
+        return res(SENDrequestapi(opts,'STORE',{request:'jmart'}));
     })
 }
 export var GETscontract=(custcode,table='contracttable')=>{
@@ -46,7 +46,7 @@ export var GETscontract=(custcode,table='contracttable')=>{
           custcode:custcode||undefined
       };
       let contract=null;
-      SENDrequestapi(opts,'japi').then(
+      SENDrequestapi(opts,'STORE',{request:'jmart'}).then(
         result=>{
           if(result.body.success){
               let others=[];
@@ -70,7 +70,7 @@ export var GETwo=(wonum,table='wonumber')=>{
         };
         let wo = null;
         if(wonum){
-          SENDrequestapi(opts,'japi').then(
+          SENDrequestapi(opts,'STORE',{request:'jmart'}).then(
             answr=>{
               if(answr.body.success&&answr.body.table.length==1){
                 console.log("WO from JMart:::::::::::",answr.body.table[0])
@@ -83,7 +83,7 @@ export var GETwo=(wonum,table='wonumber')=>{
                     option:'download',
                     template:'WO_DescriptionOfWork_tbl',
                     where:[{OP:'=',WorkOrderNumber:wonum}]
-                },'japi').then( //bring in descriptions
+                },'STORE',{request:'jmart'}).then( //bring in descriptions
                   answr=>{
                     if(answr.body.success){
                       wo.descr=''
@@ -103,7 +103,7 @@ export var GETwo=(wonum,table='wonumber')=>{
                     option:'download',
                     template:'AR_CustomerMaster_tbl',
                     where:[{OP:'=',CustomerCode:wo.custcode}]
-                },'japi').then( //bring in descriptions
+                },'STORE',{request:'jmart'}).then( //bring in descriptions
                   answr=>{
                     if(answr.body.success){
                       wo.customername=answr.body.table[0].CustomerName;
@@ -123,7 +123,7 @@ export var GETwo=(wonum,table='wonumber')=>{
                     option:'download',
                     template:'AR_CustomerPreferences_tbl',
                     where:[{OP:'=',CustomerCode:wo.custcode}]
-                },'japi').then(
+                },'STORE',{request:'jmart'}).then(
                   answr=>{
                     if(answr.body.success){
                       wo.contactemail=answr.body.table[0]?answr.body.table[0].EmailAddress:'';
@@ -144,7 +144,7 @@ export var GETcustomer=(custcode,table='customertable')=>{
           table:table,
           custcode:custcode
       };
-      return res(SENDrequestapi(opts,'japi'));
+      return res(SENDrequestapi(opts,'STORE',{request:'jmart'}));
   })
 }
 export var GETserviceitems=(custcode,table='custserviceitems')=>{
@@ -154,7 +154,7 @@ export var GETserviceitems=(custcode,table='custserviceitems')=>{
           custcode:custcode
       };
       let sitems=[];
-      SENDrequestapi(opts,'jmart').then(
+      SENDrequestapi(opts,'STORE',{request:'jmart'}).then(
         result=>{
           if(result.body.success){
             for(let i=0;i<result.body.table.length;i++){
@@ -166,7 +166,7 @@ export var GETserviceitems=(custcode,table='custserviceitems')=>{
                 template:'AR_ServiceItemCustomInfo_tbl',
                 where:[{OP:'=',CustomerCode:custcode}]
             };
-            SENDrequestapi(opts2,'japi').then(
+            SENDrequestapi(opts2,'STORE',{request:'jmart'}).then(
               answr=>{
                 if(answr.body.success){
                   for(let x=0,l=answr.body.table.length;x<l;x++){
