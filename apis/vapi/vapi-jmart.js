@@ -116,7 +116,7 @@ export var GETwo=(wonum,table='wonumber')=>{
                   }
                 );
 
-                
+
 
                 SENDrequestapi({
                     table:'custom',
@@ -154,7 +154,7 @@ export var GETserviceitems=(custcode,table='custserviceitems')=>{
           custcode:custcode
       };
       let sitems=[];
-      SENDrequestapi(opts,'japi').then(
+      SENDrequestapi(opts,'jmart').then(
         result=>{
           if(result.body.success){
             for(let i=0;i<result.body.table.length;i++){
