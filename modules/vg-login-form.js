@@ -84,9 +84,6 @@ export class LoginForm extends VHCform{
           this.storecreds = this.form;
           logoeve();//do passed down event
         });
-        document.getElementById(this.dom.actions.gotovapi).addEventListener('click',(ele)=>{
-          window.open('https://18.191.134.244:5000/');
-        });
         for(let i in this.inputs){
         this.inputs[i].addEventListener('keypress',(eve)=>{
             if(eve.key == 'Enter'){document.getElementById(this.dom.actions.submit).click();};
