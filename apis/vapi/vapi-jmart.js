@@ -167,6 +167,7 @@ export var GETserviceitems=(custcode,table='custserviceitems')=>{
             };
             SENDrequestapi(opts2,'STORE',{request:'jmart'}).then(
               answr=>{
+                console.log('RECIEVED->service item info')
                 if(answr.body.success){
                   for(let x=0,l=answr.body.table.length;x<l;x++){
                     for(let y=0,ll=sitems.length;y<ll;y++){
