@@ -4,10 +4,13 @@ export var aservicefinal = (f)=>{
     }
     return {
         id: f.id || '', //Service Track Number
-        repairs:f.repairs||[],
-        savings:f.savings||0,
-        monthlymem:f.monthlymem||0,
-        total:f.total||0,
-        contract:f.contract||{}
+        emailed:f.emailed||false,
+        downloaded:f.downloaded||false,
+        payment:f.payment||{
+          total:0,
+          savings:0,
+          type:''
+        },
+        conform:f.conform||{}
     }
 }

@@ -12,6 +12,8 @@ var aserviceticket=(st={})=>{
 
     wo:awo(st.wo),
     contract:aservicecontract(st.contract),
+    conform:st.conform||{},
+    final:aservicefinal(st.final),
     track:aservicetrack(st.track),
     checks:st.checks||{},
     sitems:st.sitems||[],
