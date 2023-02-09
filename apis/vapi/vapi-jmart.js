@@ -77,7 +77,7 @@ export var GETwo=(wonum,table='wonumber')=>{
                 wo = awo(answr.body.table[0]);
                 let havedescr=false;
                 let haveemail=false;
-                let havename=false
+                let havename=false;
                 SENDrequestapi({
                     table:'custom',
                     option:'download',
@@ -85,10 +85,11 @@ export var GETwo=(wonum,table='wonumber')=>{
                     where:[{OP:'=',WorkOrderNumber:wonum}]
                 },'STORE',{request:'jmart'}).then( //bring in descriptions
                   answr=>{
+                    console.log('JAPI->recieved description of work');
                     if(answr.body.success){
-                      wo.descr=''
+                      wo.descr='';
                       for(let x=0,l=answr.body.table.length;x<l;x++){
-                        wo.descr+=answr.body.table[x].WorkDescription+'\n';
+                        wo.descr+=answr.body.table[x].WorkDescription +'\n';
                       }
                     }
                     havedescr=true;
@@ -97,14 +98,14 @@ export var GETwo=(wonum,table='wonumber')=>{
                     }
                   }
                 );
-
                 SENDrequestapi({
                     table:'custom',
                     option:'download',
                     template:'AR_CustomerMaster_tbl',
                     where:[{OP:'=',CustomerCode:wo.custcode}]
-                },'STORE',{request:'jmart'}).then( //bring in descriptions
+                },'STORE',{request:'jmart'}).then( //bring in customer name
                   answr=>{
+                    console.log('JAPI->recieved customer name');
                     if(answr.body.success){
                       wo.customername=answr.body.table[0].CustomerName;
                       console.log(wo.customername, "CUSTOMER NAME")
@@ -115,9 +116,6 @@ export var GETwo=(wonum,table='wonumber')=>{
                     }
                   }
                 );
-
-
-
                 SENDrequestapi({
                     table:'custom',
                     option:'download',
@@ -125,6 +123,7 @@ export var GETwo=(wonum,table='wonumber')=>{
                     where:[{OP:'=',CustomerCode:wo.custcode}]
                 },'STORE',{request:'jmart'}).then(
                   answr=>{
+                    console.log('JAPI->recieved email address');
                     if(answr.body.success){
                       wo.contactemail=answr.body.table[0]?answr.body.table[0].EmailAddress:'';
                     }
