@@ -75,9 +75,11 @@ export var GETwo=(wonum,table='wonumber')=>{
               if(answr.body.success&&answr.body.table.length==1){
                 console.log("WO from JMart:::::::::::",answr.body.table[0])
                 wo = awo(answr.body.table[0]);
+
                 let havedescr=false;
                 let haveemail=false;
-                let havename=false;
+                let havename=true;
+
                 SENDrequestapi({
                     table:'custom',
                     option:'download',
@@ -92,45 +94,36 @@ export var GETwo=(wonum,table='wonumber')=>{
                         wo.descr+=answr.body.table[x].WorkDescription +'\n';
                       }
                     }
-                    havedescr=true;
-                    if(haveemail && havename){
-                      return resolve(wo)
-                    }
+                    SENDrequestapi({
+                        table:'custom',
+                        option:'download',
+                        template:'AR_CustomerPreferences_tbl',
+                        where:[{OP:'=',CustomerCode:wo.custcode}]
+                    },'STORE',{request:'jmart'}).then(
+                      answr=>{
+                        console.log('JAPI->recieved email address');
+                        if(answr.body.success){
+                          wo.contactemail=answr.body.table[0]?answr.body.table[0].EmailAddress:'';
+                        }
+                        SENDrequestapi({
+                            table:'custom',
+                            option:'download',
+                            template:'AR_CustomerMaster_tbl',
+                            where:[{OP:'=',CustomerCode:wo.custcode}]
+                        },'STORE',{request:'jmart'}).then( //bring in customer name
+                          answr=>{
+                            console.log('JAPI->recieved customer name');
+                            if(answr.body.success){
+                              wo.customername=answr.body.table[0].CustomerName;
+                              console.log(wo.customername, "CUSTOMER NAME")
+                            }
+                            return resolve(wo);
+                          }
+                        );
+                      }
+                    )
                   }
                 );
-                SENDrequestapi({
-                    table:'custom',
-                    option:'download',
-                    template:'AR_CustomerMaster_tbl',
-                    where:[{OP:'=',CustomerCode:wo.custcode}]
-                },'STORE',{request:'jmart'}).then( //bring in customer name
-                  answr=>{
-                    console.log('JAPI->recieved customer name');
-                    if(answr.body.success){
-                      wo.customername=answr.body.table[0].CustomerName;
-                      console.log(wo.customername, "CUSTOMER NAME")
-                    }
-                    havename=true;
-                    if(haveemail && havedescr){
-                      return resolve(wo)
-                    }
-                  }
-                );
-                SENDrequestapi({
-                    table:'custom',
-                    option:'download',
-                    template:'AR_CustomerPreferences_tbl',
-                    where:[{OP:'=',CustomerCode:wo.custcode}]
-                },'STORE',{request:'jmart'}).then(
-                  answr=>{
-                    console.log('JAPI->recieved email address');
-                    if(answr.body.success){
-                      wo.contactemail=answr.body.table[0]?answr.body.table[0].EmailAddress:'';
-                    }
-                    haveemail = true;
-                    if(havedescr && havename){return resolve(wo);}
-                  }
-                )
               }else{return resolve(wo);}
             }
           );
