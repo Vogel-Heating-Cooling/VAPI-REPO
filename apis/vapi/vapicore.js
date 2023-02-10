@@ -73,7 +73,7 @@ export var SENDrequestapi = (pack,route='LOGIN',{
         pack:pack
       })
     }
-    console.log('SENDING REQUEST',options);
+    console.log('SENDING REQUEST->',request);
     fetch(url+route,options)
     .then(response=>{return response.json()})
     .then(data=>{console.log('Response Data>',data);return res(data);})
