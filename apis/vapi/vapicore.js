@@ -1,4 +1,4 @@
-export var VHPhost = 'https://www.vhpportal.com/';//'http://localhost:5000/'; //
+export var VHPhost = 'https://3.135.202.40/';//'http://localhost:5000/'; //
 
 /* Pack
   collect: '' (group of data)

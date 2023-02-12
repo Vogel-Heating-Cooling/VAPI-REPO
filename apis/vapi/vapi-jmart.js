@@ -1,4 +1,4 @@
-import { SENDrequestapi } from 'https://www.vhpportal.com/repo/apis/vapi/vapicore.js';
+import { SENDrequestapi } from 'https://3.135.202.40/repo/apis/vapi/vapicore.js';
 import {awo} from 'https://www.vhpportal.com/repo/ds/wos/vogel-wos.js';
 import {aservicecontract} from 'https://www.vhpportal.com/repo/ds/contracts/vogel-servicecontracts.js';
 import {aserviceitem} from 'https://www.vhpportal.com/repo/ds/customers/vogel-serviceitems.js';
