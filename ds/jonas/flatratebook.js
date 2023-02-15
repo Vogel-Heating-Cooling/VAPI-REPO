@@ -33,6 +33,6 @@ export var aflatrepair=(fr={})=>{
     pl:fr.pl || '',
     price:fr.price||'',
     qty:fr.qty||1,
-    appr:fr.appr||false
+    appr:fr.appr||'YES'
   }
 }
