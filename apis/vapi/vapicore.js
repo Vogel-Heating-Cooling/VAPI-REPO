@@ -65,8 +65,8 @@ export var SENDrequestapi = (pack,route='LOGIN',{
       },
       body:JSON.stringify({
         access:{
-          user:'VOGCH',
-          pswrd:'vogel123',
+          user:user,
+          pswrd:pswrd,
           coid:'01',
           request:request
         },
