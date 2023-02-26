@@ -1,8 +1,8 @@
-.vhc-load-screen{
+.vhc-ticket-load-screen,.vhc-load-screen,.vhc-save-load-screen, .vhc-email-load-screen{
+  display: none;
   position:fixed;
   width:100%;
   height:100%;
-  z-index: 5;
 }
 
 /*Container for adding contextual items to load screen like text, etc*/
@@ -21,8 +21,58 @@
   justify-content: center;
 }
 
+/*Image size must be a ratio of 1920 by 1080*/
+.vhc-load-screen-img{
+  width: 640px;
+  height: 360px;
+  z-index: 100;
+}
+
+/*Dash*/
+.vhc-ticket-load-screen>.vhc-load-screen-item-cont {
+  height: 30vh;
+  width: 40vw;
+  margin-top: 35vh;
+  margin-left: 30vw;
+}
+
+.vhc-ticket-load-screen>.vhc-load-screen-item-cont>.vhc-load-screen-img {
+  width: 320px;
+  height: 180px;
+}
+
+/*Save*/
+.vhc-save-load-screen>.vhc-load-screen-item-cont {
+  height: 15vh;
+  width: 20vw;
+  margin-top: 42.5vh;
+  margin-left: 40vw;
+}
+
+.vhc-save-load-screen>.vhc-load-screen-item-cont>.vhc-load-screen-img {
+  width: 160px;
+  height: 90px;
+}
+
+/*Email*/
+.vhc-email-load-screen>.vhc-load-screen-item-cont {
+  height: 30vh;
+  width: 40vw;
+  margin-top: 35vh;
+  margin-left: 30vw;
+}
+
+.vhc-email-load-screen>.vhc-load-screen-item-cont>.vhc-load-screen-img {
+  width: 320px;
+  height: 180px;
+}
+
 .noshow {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: 100;
+  top:0;
+  left:0;
 }
 
 .shadow {
@@ -55,11 +105,4 @@
   to {
     width: 1.25em;    
   }
-}
-
-/*Image size must be a ratio of 1920 by 1080*/
-.vhc-load-screen-img{
-  width: 640px;
-  height: 360px;
-  z-index: 100;
 }
